@@ -6,60 +6,8 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the YML file may be used to install only certain pieces of it, such as Filebeat.
 
-![TODO: Update playbook](Ansible/ELKplaybook.yml)
-
- ---
- - name:  Config elk VM with Docker
-   hosts: elk
-   remote_user: azadmin
-   become: true
-   tasks:
-
-                     -  name: docker.io
-                        apt:
-                                update_cache: yes
-                                name: docker.io
-                                state: present
-                     -  name: install pip3
-                        apt:
-                                force_apt_get: yes
-                                name: python3-pip
-                                state: present
-                     -  name: Install Pyhton Docker Module
-                        pip:
-                                name: docker
-                                state: present
-                     -  name: download and launch a docker web container
-                        docker_container:
-                                name: dvwa
-                                image: cyberxsecurity/dvwa
-                                state: started
-                                restart_policy: always
-                                published_ports: 80:80
-                     -  name: Enable docker service
-                        systemd:
-                                name: docker
-                                enabled: yes
-
-                     -  name: Use more memory
-                        sysctl:
-                                name: vm.max_map_count
-                                value: '262144'
-                                state: present
-                                reload: yes
-
-                     -  name: Download and Run elk container
-                        docker_container:
-                                name: elk
-                                image: sebp/elk:761
-                                state: started
-                                restart_policy: always
-                                published_ports:
-                                  -  5601:5601
-                                  -  9200:9200
-                                  -  5044:5044
-								  
-								  
+![ELKplaybook.yml](Ansible/ELKplaybook.yml)
+								  								  
 								  
 This document contains the following details:
 - Description of the Topology
