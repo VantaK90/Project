@@ -8,12 +8,12 @@ These files have been tested and used to generate a live ELK deployment on Azure
 
   - _TODO: Ansible/ELKplaybook.yml
 
----
-- name:  Config elk VM with Docker
-  hosts: elk
-  remote_user: azadmin
-  become: true
-  tasks:
+ ---
+ - name:  Config elk VM with Docker
+   hosts: elk
+   remote_user: azadmin
+   become: true
+   tasks:
 
                      -  name: docker.io
                         apt:
